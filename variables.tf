@@ -4,7 +4,13 @@ variable "db_password" {
   sensitive   = true
 }
 
-variable "dockerhub_pat" {
+variable "dockerhub_username"{
+  description = "Docker Hub username used by the container apps to pull images."
+  type        = string
+  sensitive   = true
+}
+
+variable "dockerhub_token"{
   description = "Docker Hub personal access token used by the container apps to pull images."
   type        = string
   sensitive   = true

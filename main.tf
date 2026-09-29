@@ -1136,7 +1136,7 @@ resource "azurerm_container_app" "res-87" {
   registry {
     password_secret_name = "reg-pswd-1bc0b56e-9aa0"
     server               = "registry.hub.docker.com"
-    username             = "dcanasp"
+    username             = var.dockerhub_username
   }
   secret {
     name  = "db-password"
@@ -1144,7 +1144,7 @@ resource "azurerm_container_app" "res-87" {
   }
   secret {
     name  = "reg-pswd-1bc0b56e-9aa0"
-    value = var.dockerhub_pat
+    value = var.dockerhub_token
   }
   template {
     cooldown_period_in_seconds = 120
@@ -1234,7 +1234,7 @@ resource "azurerm_container_app" "res-88" {
   registry {
     password_secret_name = "reg-pswd-709d69a9-a3cb"
     server               = "registry.hub.docker.com"
-    username             = "dcanasp"
+    username             = var.dockerhub_username
   }
   secret {
     name  = "connection-strings-sentirobosdb"
@@ -1250,7 +1250,7 @@ resource "azurerm_container_app" "res-88" {
   }
   secret {
     name  = "reg-pswd-709d69a9-a3cb"
-    value = var.dockerhub_pat
+    value = var.dockerhub_token
   }
   template {
     cooldown_period_in_seconds = 120
