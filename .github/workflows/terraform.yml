@@ -1,0 +1,19 @@
+name: Terraform
+
+on:
+  repository_dispatch:
+    types:
+      - deploy
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Terraform pipeline triggered
+        run: |
+            echo "Service: ${{ github.event.client_payload.service }}"
+            echo "Image tag: ${{ github.event.client_payload.tag }}"
+
+      - name: Placeholder
+        run: echo "Terraform will be configured here later."
