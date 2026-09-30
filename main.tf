@@ -1151,7 +1151,7 @@ resource "azurerm_container_app" "res-87" {
     max_replicas               = 1
     container {
       cpu    = 0.25
-      image  = "registry.hub.docker.com/dcanasp/senti_robos:senti_datos"
+      image  = "${var.image_repository}:${var.senti_datos_personales_image_tag}"
       memory = "0.5Gi"
       name   = "senti-datos-personales"
       env {
@@ -1257,7 +1257,7 @@ resource "azurerm_container_app" "res-88" {
     max_replicas               = 1
     container {
       cpu    = 0.25
-      image  = "registry.hub.docker.com/dcanasp/senti_robos:9-20"
+      image  = "${var.image_repository}:${var.test_image_tag}"
       memory = "0.5Gi"
       name   = "test"
       env {

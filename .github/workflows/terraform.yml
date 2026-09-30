@@ -12,9 +12,25 @@ jobs:
 
     steps:
       - name: Terraform pipeline triggered
+        env:
+          SERVICE: ${{ github.event.client_payload.service }}
+          TAG: ${{ github.event.client_payload.tag }}
         run: |
-            echo "Service: ${{ github.event.client_payload.service }}"
-            echo "Image tag: ${{ github.event.client_payload.tag }}"
+            echo "Service: $SERVICE"
+            echo "Image tag: $TAG"
+
+      - name: Map service to image tag variable
+        env:
+          SERVICE: ${{ github.event.client_payload.service }}
+          TAG: ${{ github.event.client_payload.tag }}
+        run: |
+            case "$SERVICE" in
+              senti-datos-personales) VAR_NAME="senti_datos_personales_image_tag" ;;
+              test)                   VAR_NAME="test_image_tag" ;;
+              *) echo "Unknown service: $SERVICE"; exit 1 ;;
+            esac
+            # Terraform reads TF_VAR_<name> from the environment for the remaining steps
+            echo "TF_VAR_${VAR_NAME}=${TAG}" >> "$GITHUB_ENV"
 
       - name: Checkout repository
         uses: actions/checkout@v4

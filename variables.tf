@@ -15,3 +15,20 @@ variable "dockerhub_token"{
   type        = string
   sensitive   = true
 }
+variable "image_repository" {
+  description = "Docker Hub repository that holds the images for all container apps."
+  type        = string
+  default     = "registry.hub.docker.com/dcanasp/senti_robos"
+}
+
+variable "senti_datos_personales_image_tag" {
+  description = "Image tag deployed to the senti-datos-personales container app."
+  type        = string
+  default     = "senti_datos"
+}
+
+variable "test_image_tag" {
+  description = "Image tag deployed to the test container app."
+  type        = string
+  default     = "9-20"
+}
