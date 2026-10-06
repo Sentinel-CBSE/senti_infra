@@ -37,10 +37,10 @@ jobs:
           TAG: ${{ github.event.client_payload.tag }}
         run: |
             case "$SERVICE" in
-              senti-datos-personales|senti-datos-personales-ms) VAR_NAME="senti_datos_personales_image_tag" ;;
-              senti-geolocalizacion|senti-geolocalizacion-ms)   VAR_NAME="senti_geolocalizacion_image_tag" ;;
-              senti-gestion-robos|senti-gestion-robos-ms)       VAR_NAME="senti_gestion_robos_image_tag" ;;
-              senti-notificacion|senti-notificacion-ms)         VAR_NAME="senti_notificacion_image_tag" ;;
+              senti_datos_personales_ms) VAR_NAME="senti_datos_personales_image_tag" ;;
+              senti_geolocalizacion_ms)  VAR_NAME="senti_geolocalizacion_image_tag" ;;
+              senti_gestion_robos_ms)    VAR_NAME="senti_gestion_robos_image_tag" ;;
+              senti_notificacion_ms)     VAR_NAME="senti_notificacion_image_tag" ;;
               *) echo "Unknown service: $SERVICE"; exit 1 ;;
             esac
             # Terraform reads TF_VAR_<name> from the environment for the remaining steps
