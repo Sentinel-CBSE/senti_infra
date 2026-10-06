@@ -15,20 +15,45 @@ variable "dockerhub_token"{
   type        = string
   sensitive   = true
 }
-variable "image_repository" {
-  description = "Docker Hub repository that holds the images for all container apps."
+
+variable "servicebus_connection_string" {
+  description = "Connection string for the senti-notificaciones-mq Service Bus namespace, used by the container apps."
   type        = string
-  default     = "registry.hub.docker.com/dcanasp/senti_robos"
+  sensitive   = true
+}
+
+variable "firebase_credentials_json" {
+  description = "Firebase service account key (full JSON file contents) used by senti-notificacion-ms."
+  type        = string
+  sensitive   = true
+}
+
+variable "image_repository" {
+  description = "Docker Hub namespace that holds the image repositories for all container apps."
+  type        = string
+  default     = "registry.hub.docker.com/julian9999"
 }
 
 variable "senti_datos_personales_image_tag" {
-  description = "Image tag deployed to the senti-datos-personales container app."
+  description = "Image tag deployed to the senti-datos-personales-ms container app."
   type        = string
-  default     = "senti_datos"
+  default     = "latest"
 }
 
-variable "test_image_tag" {
-  description = "Image tag deployed to the test container app."
+variable "senti_geolocalizacion_image_tag" {
+  description = "Image tag deployed to the senti-geolocalizacion-ms container app."
   type        = string
-  default     = "9-20"
+  default     = "latest"
+}
+
+variable "senti_gestion_robos_image_tag" {
+  description = "Image tag deployed to the senti-gestion-robos-ms container app."
+  type        = string
+  default     = "latest"
+}
+
+variable "senti_notificacion_image_tag" {
+  description = "Image tag deployed to the senti-notificacion-ms container app."
+  type        = string
+  default     = "latest"
 }
